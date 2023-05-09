@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { RootState } from '../..';
 
-// OBS: definição e gerenciamento de um dado que seja do formato !== de ARRAY
+// OBS: um slice é usado para a definição e o gerenciamento de um dado que seja do formato !== de ARRAY
 
 // Define a type for the slice state
 interface UserLoggedState {
@@ -21,14 +21,15 @@ const initialState: UserLoggedState = {
 	isLogged: false,
 };
 
-// um slice é o misto entre REDUCER + ACTIONS
+// um slice a junção de REDUCER + ACTIONS
 export const userLoggedSlice = createSlice({
 	name: 'userLogged',
 	initialState,
 	reducers: {
+		// action.type terá o valor "setUserLogged"
+		// action.payload deverá ser do typo SetUserLoggedType
 		setUserLogged: (state, action: PayloadAction<SetUserLoggedType>) => {
-			// mudar o usuario logado preenchendo os valores de email, senha e setando isLogged para true
-
+			// muda o usuario logado preenchendo os valores de email, senha e setando isLogged para true
 			return {
 				email: action.payload.email,
 				password: action.payload.password,
@@ -36,7 +37,7 @@ export const userLoggedSlice = createSlice({
 			};
 		},
 
-		removeUserLogged: (state) => {
+		removeUserLogged: () => {
 			return initialState;
 		},
 	},

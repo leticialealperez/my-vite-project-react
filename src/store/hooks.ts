@@ -7,10 +7,10 @@ import type { AppDispatch, RootState } from '.';
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// useDispatch - criar um disparador de ações para que eu consiga executar a modificação de um estado global
+// useAppDispatch - criar um disparador de ações para que eu consiga executar a modificação de um estado global
 // const dispatch = useAppDispatch()
 // dispatch(atualizarContato({ ... }))
 
-// useSelector - responsavel pela leitura de um determinado valor/propriedade da nossa store
-//  const allPosts = useAppSelector(selectUserLogged);
+// useAppSelector - responsavel pela leitura de um determinado valor/propriedade do estado global da aplicação
+// const allPosts = useAppSelector(selectPosts);
 // const allUsers = useAppSelector((state) => state.users);
