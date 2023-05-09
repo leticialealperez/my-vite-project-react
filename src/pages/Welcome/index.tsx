@@ -7,8 +7,12 @@ import {
 } from '../../store/modules/userLogged/userLoggedSlice';
 
 const Welcome: React.FC = () => {
-	const dispatch = useAppDispatch();
+	// 1 - Acessar o valor de uma propriedade da store - apenas leitura - useAppSelector
 	const usuarioLogado = useAppSelector(selectUserLogged);
+
+	// 2 - Alterar o valor de alguma propriedade da store - intensão do usuário - useAppDispatch
+	// dispatch - servirá para executar uma action definida em algum slice da aplicação
+	const dispatch = useAppDispatch();
 
 	const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
 		ev.preventDefault();
@@ -29,7 +33,10 @@ const Welcome: React.FC = () => {
 
 	return (
 		<div className="App">
-			{usuarioLogado.isLogged && <p>Bem vindo, {usuarioLogado.email}</p>}
+			{/* EXEMPLO DE UTILIZAÇÃO DE UM ESTADO GLOBAL NA VIEW / COMPONENTE */}
+			{usuarioLogado.isLogged && (
+				<h1>Bem vindo, {usuarioLogado.email}</h1>
+			)}
 			<div>
 				<form onSubmit={handleSubmit}>
 					<input type="text" id="email" name="email" />
